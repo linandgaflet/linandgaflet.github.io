@@ -20,7 +20,7 @@
         <section id="stories">
             <h2>Hikayeler</h2>
             <ul id="story-list">
-                <li><a href="#" onclick="showStory('story1')">Enver Paşa Ülkeyi Yahudilere Satıyor!</a></li>
+                <li><a href="#" onclick="showStory('story1')">Yalnızlık</a></li>
                 <li><a href="#" onclick="showStory('story2')">Umut</a></li>
                 <!-- İstediğiniz kadar hikaye ekleyebilirsiniz -->
             </ul>
@@ -54,27 +54,81 @@
         function showStory(storyId) {
             var storyText;
             if (storyId === 'story1') {
-                storyText = "<h2>Enver Paşa Ülkeyi Yahudilere Satıyor!</h2><p>Üsküdarın İşlek Mahallelerinden birinde, Enver Paşa'nın çok tuhaf bir macerası yaşandı. Enver Paşa'nın Osmanlıyı Yahudilere satmaya çalışması.
+                storyText = "<h2>Yalnızlık</h2><p>Bir zamanlar, uzak bir köyde yaşayan bir adam vardı. Her gün aynı yolları yürüyüp, aynı insanlarla selamlaşırdı. Fakat içinde bir yalnızlık vardı, kimseyle paylaşamadığı, kimsenin anlamadığı. Bir gün, yağmurlu bir günde yürüyüşe çıktı ve aniden yağmur diniverdi. Yağmurun ardından gelen sessizlik, yalnızlığı daha da hissettirdi ona.</p>";
+            } else if (storyId === 'story2') {
+                storyText = "<h2>Umut</h2><p>Bir fidan, küçük bir tohumdan yeşermişti. Toprak altında geçirdiği günler boyunca güneşin ışıklarını, yağmurun serinliğini hissetti. Bir gün, yüzeye doğru uzanmaya başladı. İlk yaprağı toprakla buluştuğunda, bir umut belirdi gözlerinde. O küçük fidan, yaşamın her anında umudu temsil ediyordu.</p>";
+            }
 
+            var modalContent = document.getElementById('modal-content');
+            modalContent.innerHTML = storyText;
+            var modal = document.getElementById('story-modal');
+            modal.style.display = 'block';
+        }
 
+        function closeModal() {
+            var modal = document.getElementById('story-modal');
+            modal.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lin and Gaflet</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Lin and Gaflet</h1>
+            <nav>
+                <a href="#" id="admin-link">Admin Girişi</a>
+            </nav>
+        </div>
+    </header>
 
-Enver paşa bir anda nedeni bilinmez bir şekilde Bir Yahudi mahallesine gitti ve elinde büyük bir "Satılık: Osmanlı İmparatorluğu" pankartıyla dolaşmaya başladı. İnsanlar şaşkınlıkla bakıyor, bazıları gülüyor, bazıları ise şüpheyle yaklaşıyordu.
+    <main class="container">
+        <section id="stories">
+            <h2>Hikayeler</h2>
+            <ul id="story-list">
+                <li><a href="#" onclick="showStory('story1')">Yalnızlık</a></li>
+                <li><a href="#" onclick="showStory('story2')">Umut</a></li>
+                <!-- İstediğiniz kadar hikaye ekleyebilirsiniz -->
+            </ul>
+        </section>
+    </main>
 
+    <footer>
+        <div class="container">
+            <p>42656e20536962657274616e6b</p>
+        </div>
+    </footer>
 
+    <div id="story-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="modal-content"></div>
+        </div>
+    </div>
 
-Enver Paşa, kendini iyi bir pazarlamacı olarak gördü ve hemen satış pitch'ini yapmaya başladı: "Bakın beyler, bayanlar, işte size eşsiz bir fırsat! Osmanlı İmparatorluğu, sadece birkaç altın karşılığında sizin olabilir! Her türlü taksit seçeneği mevcut!"
+    <script>
+        document.getElementById('admin-link').onclick = function(event) {
+            event.preventDefault();
+            var password = prompt('Admin şifresini girin:');
+            if (password === 'basak') {
+                window.location.href = 'admin.html';
+            } else {
+                alert('Yanlış şifre! Admin paneline erişim reddedildi.');
+            }
+        };
 
-
-
-Ancak, ne yazık ki, Enver Paşa'nın bu tuhaf teklifi kimseyi ikna etmedi. Hatta bir Yahudi esnafı, "Bir dakika, Osmanlı'yı kim satıyor?" diye sorduğunda, Enver Paşa ne diyeceğini bilemedi. Bir anlık sessizlikten sonra, "Ben sadece bir aracıyım!" diye cevapladı.
-
-
-
--kaynak: Miriam Rosenbaum: Osmanlı Hatıralarım, Enver Paşa Anılarım, 451. Sayfa.
-
-
-
- (NOT: Burada Yazılan Herşey İroni Ve Şaka Amaçlıdır, Hiçbir Gerçekçilik İçermez, Tek Amaç Eğlenmektir.</p>";
+        function showStory(storyId) {
+            var storyText;
+            if (storyId === 'story1') {
+                storyText = "<h2>Yalnızlık</h2><p>Bir zamanlar, uzak bir köyde yaşayan bir adam vardı. Her gün aynı yolları yürüyüp, aynı insanlarla selamlaşırdı. Fakat içinde bir yalnızlık vardı, kimseyle paylaşamadığı, kimsenin anlamadığı. Bir gün, yağmurlu bir günde yürüyüşe çıktı ve aniden yağmur diniverdi. Yağmurun ardından gelen sessizlik, yalnızlığı daha da hissettirdi ona.</p>";
             } else if (storyId === 'story2') {
                 storyText = "<h2>Umut</h2><p>Bir fidan, küçük bir tohumdan yeşermişti. Toprak altında geçirdiği günler boyunca güneşin ışıklarını, yağmurun serinliğini hissetti. Bir gün, yüzeye doğru uzanmaya başladı. İlk yaprağı toprakla buluştuğunda, bir umut belirdi gözlerinde. O küçük fidan, yaşamın her anında umudu temsil ediyordu.</p>";
             }
