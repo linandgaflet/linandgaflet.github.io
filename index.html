@@ -4,26 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lin and Gaflet</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Hoş Geldiniz!</h1>
-    <p>GitHub Pages üzerindeki kişisel web sitenize hoş geldiniz.</p>
+    <header>
+        <div class="container">
+            <h1>Lin and Gaflet</h1>
+            <nav>
+                <a href="#" id="admin-link">Admin Girişi</a>
+            </nav>
+        </div>
+    </header>
 
-    <div id="admin-link-container">
-        <a href="#" id="admin-link">abc</a>
-    </div>
+    <main class="container">
+        <section id="stories">
+            <h2>Hikayeler</h2>
+            <ul id="story-list">
+                <li><a href="#">Normal Hikaye 1</a></li>
+                <li><a href="#">Normal Hikaye 2</a></li>
+                <!-- İstediğiniz kadar hikaye ekleyebilirsiniz -->
+            </ul>
+        </section>
+    </main>
 
-    <div id="stories-list">
-        <h2>Hikayeler</h2>
-        <ul id="story-list">
-            <li><a href="#">Normal Hikaye 1</a></li>
-            <li><a href="#">Normal Hikaye 2</a></li>
-            <!-- Buraya istediğiniz kadar normal hikaye ekleyebilirsiniz -->
-        </ul>
-    </div>
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Lin and Gaflet. Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
 
     <script>
-        document.getElementById('admin-link').onclick = function() {
+        document.getElementById('admin-link').onclick = function(event) {
+            event.preventDefault();
             var password = prompt('Admin şifresini girin:');
             if (password === 'basak') {
                 window.location.href = 'admin.html';
