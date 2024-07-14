@@ -3,19 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Komik Hikayeler</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Lin and Gaflet</title>
 </head>
 <body>
-    <header>
-        <div id="logo">abc</div>
-        <h1>Komik Sahte Hikayeler</h1>
-    </header>
-    <main>
-        <div id="stories">
-            <!-- Hikaye başlıkları buraya eklenecek -->
-        </div>
-    </main>
-    <script src="scripts.js"></script>
+    <h1>Hoş Geldiniz!</h1>
+    <p>GitHub Pages üzerindeki kişisel web sitenize hoş geldiniz.</p>
+
+    <a href="#" id="admin-link">Admin Paneli</a>
+
+    <script>
+        document.getElementById('admin-link').onclick = function() {
+            var password = prompt('Admin şifresini girin:');
+            if (password === 'basak') {
+                window.location.href = 'admin.html';
+            } else {
+                alert('Yanlış şifre! Admin paneline erişim reddedildi.');
+            }
+        };
+    </script>
 </body>
 </html>
