@@ -20,16 +20,29 @@
         <section id="stories">
             <h2>Hikayeler</h2>
             <ul id="story-list">
-                <li><a href="#">Normal Hikaye 1</a></li>
-                <li><a href="#">Normal Hikaye 2</a></li>
+                <li><a href="#" onclick="showStory('story1')">Normal Hikaye 1</a></li>
+                <li><a href="#" onclick="showStory('story2')">Normal Hikaye 2</a></li>
                 <!-- İstediğiniz kadar hikaye ekleyebilirsiniz -->
             </ul>
+        </section>
+        
+        <section id="story-content" style="display: none;">
+            <div class="story" id="story1">
+                <h2>Normal Hikaye 1</h2>
+                <p>Deneme 1</p>
+                <p>Bu hikaye Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac justo mollis, aliquet libero sed, gravida erat. Integer ac tempor orci. Nunc maximus lectus sit amet justo congue, eget accumsan ligula eleifend. Nullam id aliquam mi. Duis non odio vitae felis viverra ultrices vel sed nunc.</p>
+            </div>
+            <div class="story" id="story2">
+                <h2>Normal Hikaye 2</h2>
+                <p>Deneme 2</p>
+                <p>Etiam eu augue tincidunt, faucibus dolor sed, consequat risus. Ut ac odio fermentum, dapibus nulla sed, tempor dui. Aenean eu ligula pretium, convallis tortor vitae, aliquet nunc. Integer consequat turpis eget ultricies consectetur. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Proin semper tellus vel lacus vehicula, at maximus lectus aliquam.</p>
+            </div>
         </section>
     </main>
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 Lin and Gaflet. Tüm hakları saklıdır.</p>
+            <p>42656e20536962657274616e6b</p>
         </div>
     </footer>
 
@@ -43,6 +56,20 @@
                 alert('Yanlış şifre! Admin paneline erişim reddedildi.');
             }
         };
+
+        function showStory(storyId) {
+            // Tüm hikayeleri gizle
+            var stories = document.getElementsByClassName('story');
+            for (var i = 0; i < stories.length; i++) {
+                stories[i].style.display = 'none';
+            }
+
+            // İlgili hikayeyi göster
+            var storyToShow = document.getElementById(storyId);
+            if (storyToShow) {
+                storyToShow.style.display = 'block';
+            }
+        }
     </script>
 </body>
 </html>
