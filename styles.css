@@ -1,10 +1,11 @@
 /* Temel CSS Stili */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     margin: 0;
     padding: 0;
-    background-color: #f0f0f0;
+    background-color: #f9f9f9;
+    color: #333;
 }
 
 .container {
@@ -46,10 +47,31 @@ section {
     padding: 20px;
     margin-bottom: 20px;
     border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 section h2 {
     color: #333;
+    border-bottom: 2px solid #333;
+    padding-bottom: 5px;
+}
+
+#story-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+#story-list li {
+    margin-bottom: 10px;
+}
+
+#story-list li a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+#story-list li a:hover {
+    text-decoration: underline;
 }
 
 footer {
