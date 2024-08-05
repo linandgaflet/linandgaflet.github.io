@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome Page</title>
+    <title>Hoş Geldiniz</title>
     <style>
         body {
             display: flex;
@@ -12,16 +12,11 @@
             height: 100vh;
             margin: 0;
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            background-color: #121212;
+            color: #ffffff;
         }
         .container {
             text-align: center;
-        }
-        .hidden-text {
-            display: none;
-            margin-top: 20px;
-            font-size: 18px;
-            color: #333;
         }
         .show-button {
             background-color: red;
@@ -30,25 +25,101 @@
             border: none;
             cursor: pointer;
             font-size: 16px;
+            margin-top: 20px;
         }
         .show-button:hover {
             background-color: darkred;
+        }
+        .hidden-text {
+            display: none;
+            position: relative;
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+            width: 300px;
+            height: 100px;
+            background-color: #eeeeee;
+        }
+        .hidden-text canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .copy-button {
+            display: none;
+            background-color: green;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        .copy-button:hover {
+            background-color: darkgreen;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Welcome to My Site</h1>
-        <button class="show-button" onclick="showText()">See the Message</button>
+        <h1>Hoş Geldiniz</h1>
+        <button class="show-button" onclick="showText()">Mesajı Görüntüle</button>
         <div class="hidden-text" id="hiddenText">
-            This is the hidden message. Welcome and have a great day!
+            <canvas id="scratchCanvas" width="300" height="100"></canvas>
+            <span id="hiddenMessage" style="visibility: hidden;">discord.gg/rZHqvHkf</span>
         </div>
+        <button class="copy-button" id="copyButton" onclick="copyText()">Yazıyı Kopyala</button>
     </div>
     <script>
         function showText() {
             document.getElementById('hiddenText').style.display = 'block';
+            initScratchCard();
+        }
+
+        function initScratchCard() {
+            const canvas = document.getElementById('scratchCanvas');
+            const ctx = canvas.getContext('2d');
+            ctx.fillStyle = 'gray';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            let isDrawing = false;
+
+            canvas.addEventListener('mousedown', () => isDrawing = true);
+            canvas.addEventListener('mouseup', () => isDrawing = false);
+            canvas.addEventListener('mousemove', (event) => {
+                if (isDrawing) {
+                    const rect = canvas.getBoundingClientRect();
+                    const x = event.clientX - rect.left;
+                    const y = event.clientY - rect.top;
+                    ctx.clearRect(x, y, 20, 20);
+                    checkScratchCompletion();
+                }
+            });
+
+            function checkScratchCompletion() {
+                const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                let totalPixels = imageData.width * imageData.height;
+                let scratchedPixels = 0;
+
+                for (let i = 0; i < totalPixels * 4; i += 4) {
+                    if (imageData.data[i + 3] === 0) {
+                        scratchedPixels++;
+                    }
+                }
+
+                if (scratchedPixels / totalPixels > 0.5) {
+                    document.getElementById('hiddenMessage').style.visibility = 'visible';
+                    document.getElementById('copyButton').style.display = 'block';
+                }
+            }
+        }
+
+        function copyText() {
+            const hiddenMessage = document.getElementById('hiddenMessage').innerText;
+            navigator.clipboard.writeText(hiddenMessage).then(() => {
+                alert('Yazı kopyalandı: ' + hiddenMessage);
+            });
         }
     </script>
 </body>
 </html>
-
