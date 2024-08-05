@@ -3,146 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lin and Gaflet</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Welcome Page</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+        .container {
+            text-align: center;
+        }
+        .hidden-text {
+            display: none;
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+        .show-button {
+            background-color: red;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .show-button:hover {
+            background-color: darkred;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1>Lin and Gaflet</h1>
-            <nav>
-                <a href="#" id="admin-link">Admin Girişi</a>
-            </nav>
-        </div>
-    </header>
-
-    <main class="container">
-        <section id="stories">
-            <h2>Hikayeler</h2>
-            <ul id="story-list">
-                <li><a href="#" onclick="showStory('story1')">Yalnızlık</a></li>
-                <li><a href="#" onclick="showStory('story2')">Umut</a></li>
-                <!-- İstediğiniz kadar hikaye ekleyebilirsiniz -->
-            </ul>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>42656e20536962657274616e6b</p>
-        </div>
-    </footer>
-
-    <div id="story-modal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <div id="modal-content"></div>
+    <div class="container">
+        <h1>Welcome to My Site</h1>
+        <button class="show-button" onclick="showText()">See the Message</button>
+        <div class="hidden-text" id="hiddenText">
+            This is the hidden message. Welcome and have a great day!
         </div>
     </div>
-
     <script>
-        document.getElementById('admin-link').onclick = function(event) {
-            event.preventDefault();
-            var password = prompt('Admin şifresini girin:');
-            if (password === 'basak') {
-                window.location.href = 'admin.html';
-            } else {
-                alert('Yanlış şifre! Admin paneline erişim reddedildi.');
-            }
-        };
-
-        function showStory(storyId) {
-            var storyText;
-            if (storyId === 'story1') {
-                storyText = "<h2>Yalnızlık</h2><p>Bir zamanlar, uzak bir köyde yaşayan bir adam vardı. Her gün aynı yolları yürüyüp, aynı insanlarla selamlaşırdı. Fakat içinde bir yalnızlık vardı, kimseyle paylaşamadığı, kimsenin anlamadığı. Bir gün, yağmurlu bir günde yürüyüşe çıktı ve aniden yağmur diniverdi. Yağmurun ardından gelen sessizlik, yalnızlığı daha da hissettirdi ona.</p>";
-            } else if (storyId === 'story2') {
-                storyText = "<h2>Umut</h2><p>Bir fidan, küçük bir tohumdan yeşermişti. Toprak altında geçirdiği günler boyunca güneşin ışıklarını, yağmurun serinliğini hissetti. Bir gün, yüzeye doğru uzanmaya başladı. İlk yaprağı toprakla buluştuğunda, bir umut belirdi gözlerinde. O küçük fidan, yaşamın her anında umudu temsil ediyordu.</p>";
-            }
-
-            var modalContent = document.getElementById('modal-content');
-            modalContent.innerHTML = storyText;
-            var modal = document.getElementById('story-modal');
-            modal.style.display = 'block';
-        }
-
-        function closeModal() {
-            var modal = document.getElementById('story-modal');
-            modal.style.display = 'none';
+        function showText() {
+            document.getElementById('hiddenText').style.display = 'block';
         }
     </script>
 </body>
 </html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lin and Gaflet</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <header>
-        <div class="container">
-            <h1>Lin and Gaflet</h1>
-            <nav>
-                <a href="#" id="admin-link">Admin Girişi</a>
-            </nav>
-        </div>
-    </header>
 
-    <main class="container">
-        <section id="stories">
-            <h2>Hikayeler</h2>
-            <ul id="story-list">
-                <li><a href="#" onclick="showStory('story1')">Yalnızlık</a></li>
-                <li><a href="#" onclick="showStory('story2')">Umut</a></li>
-                <!-- İstediğiniz kadar hikaye ekleyebilirsiniz -->
-            </ul>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>42656e20536962657274616e6b</p>
-        </div>
-    </footer>
-
-    <div id="story-modal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <div id="modal-content"></div>
-        </div>
-    </div>
-
-    <script>
-        document.getElementById('admin-link').onclick = function(event) {
-            event.preventDefault();
-            var password = prompt('Admin şifresini girin:');
-            if (password === 'basak') {
-                window.location.href = 'admin.html';
-            } else {
-                alert('Yanlış şifre! Admin paneline erişim reddedildi.');
-            }
-        };
-
-        function showStory(storyId) {
-            var storyText;
-            if (storyId === 'story1') {
-                storyText = "<h2>Yalnızlık</h2><p>Bir zamanlar, uzak bir köyde yaşayan bir adam vardı. Her gün aynı yolları yürüyüp, aynı insanlarla selamlaşırdı. Fakat içinde bir yalnızlık vardı, kimseyle paylaşamadığı, kimsenin anlamadığı. Bir gün, yağmurlu bir günde yürüyüşe çıktı ve aniden yağmur diniverdi. Yağmurun ardından gelen sessizlik, yalnızlığı daha da hissettirdi ona.</p>";
-            } else if (storyId === 'story2') {
-                storyText = "<h2>Umut</h2><p>Bir fidan, küçük bir tohumdan yeşermişti. Toprak altında geçirdiği günler boyunca güneşin ışıklarını, yağmurun serinliğini hissetti. Bir gün, yüzeye doğru uzanmaya başladı. İlk yaprağı toprakla buluştuğunda, bir umut belirdi gözlerinde. O küçük fidan, yaşamın her anında umudu temsil ediyordu.</p>";
-            }
-
-            var modalContent = document.getElementById('modal-content');
-            modalContent.innerHTML = storyText;
-            var modal = document.getElementById('story-modal');
-            modal.style.display = 'block';
-        }
-
-        function closeModal() {
-            var modal = document.getElementById('story-modal');
-            modal.style.display = 'none';
-        }
-    </script>
-</body>
-</html>
