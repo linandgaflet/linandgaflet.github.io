@@ -87,7 +87,6 @@
     </div>
     <div class="jumpscare-link" onclick="showJumpscare()">BUNA SAKIN TIKLAMA</div>
     
-    <audio id="jumpscareSound" src="jumpscare.mp3"></audio>
     <script>
         function checkCode() {
             const codeInput = document.getElementById('codeInput').value;
@@ -107,9 +106,7 @@
         }
 
         function showJumpscare() {
-            const audio = document.getElementById('jumpscareSound');
-            audio.play();
-            alert('BOO!');
+            window.open("https://youtu.be/U1J9FifrrN8?si=JF9uHb0WKxd_Xlrf", "_blank");
         }
     </script>
 </body>
