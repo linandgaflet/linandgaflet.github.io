@@ -55,12 +55,18 @@
             padding: 10px;
             font-size: 16px;
         }
+        .password-hint {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #cccccc;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Hoş Geldiniz</h1>
         <input type="text" class="input-field" id="codeInput" placeholder="Kodunu gir">
+        <div class="password-hint">Şifre: naber müdür</div>
         <button class="show-button" onclick="checkCode()">Mesajı Görüntüle</button>
         <div class="hidden-text" id="hiddenText">
             discord.gg/rZHqvHkf
@@ -74,7 +80,7 @@
                 document.getElementById('hiddenText').style.display = 'block';
                 document.getElementById('copyButton').style.display = 'block';
             } else {
-                alert('Yanlış kod, lütfen tekrar deneyin.');
+                alert('Yanlış kod birader, neyi deniyorsun anlamadım.);
             }
         }
 
