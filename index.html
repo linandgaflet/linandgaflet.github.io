@@ -32,19 +32,11 @@
         }
         .hidden-text {
             display: none;
-            position: relative;
             margin-top: 20px;
             font-size: 18px;
             color: #333;
-            width: 300px;
-            height: 100px;
             background-color: #eeeeee;
-        }
-        .hidden-text canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            cursor: pointer;
+            padding: 10px;
         }
         .copy-button {
             display: none;
@@ -59,64 +51,35 @@
         .copy-button:hover {
             background-color: darkgreen;
         }
+        .input-field {
+            padding: 10px;
+            font-size: 16px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Hoş Geldiniz</h1>
-        <button class="show-button" onclick="showText()">Mesajı Görüntüle</button>
+        <input type="text" class="input-field" id="codeInput" placeholder="Kodunu gir">
+        <button class="show-button" onclick="checkCode()">Mesajı Görüntüle</button>
         <div class="hidden-text" id="hiddenText">
-            <canvas id="scratchCanvas" width="300" height="100"></canvas>
-            <span id="hiddenMessage" style="visibility: hidden;">discord.gg/rZHqvHkf</span>
+            discord.gg/rZHqvHkf
         </div>
         <button class="copy-button" id="copyButton" onclick="copyText()">Yazıyı Kopyala</button>
     </div>
     <script>
-        function showText() {
-            document.getElementById('hiddenText').style.display = 'block';
-            initScratchCard();
-        }
-
-        function initScratchCard() {
-            const canvas = document.getElementById('scratchCanvas');
-            const ctx = canvas.getContext('2d');
-            ctx.fillStyle = 'gray';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            let isDrawing = false;
-
-            canvas.addEventListener('mousedown', () => isDrawing = true);
-            canvas.addEventListener('mouseup', () => isDrawing = false);
-            canvas.addEventListener('mousemove', (event) => {
-                if (isDrawing) {
-                    const rect = canvas.getBoundingClientRect();
-                    const x = event.clientX - rect.left;
-                    const y = event.clientY - rect.top;
-                    ctx.clearRect(x, y, 20, 20);
-                    checkScratchCompletion();
-                }
-            });
-
-            function checkScratchCompletion() {
-                const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-                let totalPixels = imageData.width * imageData.height;
-                let scratchedPixels = 0;
-
-                for (let i = 0; i < totalPixels * 4; i += 4) {
-                    if (imageData.data[i + 3] === 0) {
-                        scratchedPixels++;
-                    }
-                }
-
-                if (scratchedPixels / totalPixels > 0.5) {
-                    document.getElementById('hiddenMessage').style.visibility = 'visible';
-                    document.getElementById('copyButton').style.display = 'block';
-                }
+        function checkCode() {
+            const codeInput = document.getElementById('codeInput').value;
+            if (codeInput === "naber müdür") {
+                document.getElementById('hiddenText').style.display = 'block';
+                document.getElementById('copyButton').style.display = 'block';
+            } else {
+                alert('Yanlış kod, lütfen tekrar deneyin.');
             }
         }
 
         function copyText() {
-            const hiddenMessage = document.getElementById('hiddenMessage').innerText;
+            const hiddenMessage = document.getElementById('hiddenText').innerText;
             navigator.clipboard.writeText(hiddenMessage).then(() => {
                 alert('Yazı kopyalandı: ' + hiddenMessage);
             });
